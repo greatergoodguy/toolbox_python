@@ -4,9 +4,10 @@ import os
 def find_files(abs_dir, query):
     for root, dirs, files in os.walk(abs_dir):
         for file in files:
-            file_path = os.path.join(root, file)
-            if query in file:
-                print file_path
+            if file.endswith(".java") or file.endswith(".xml"):
+                file_path = os.path.join(root, file)
+                if query in open(file_path).read():
+                    print file_path
 
 
 if __name__ == "__main__": 
